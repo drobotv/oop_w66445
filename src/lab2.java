@@ -2,6 +2,7 @@ import java.util.Locale;
 import java.util.Scanner;
 import java.util.Random;
 import java.util.Arrays;
+import java.lang.Double;
 
 public class lab2 {
     public static void main(String[] args) {
@@ -21,14 +22,33 @@ public class lab2 {
 //        System.out.println("OdpC: " + czyPolindrom(c));
 //        System.out.println("OdpD: " + czyPolindrom(d));
 
-        lab02_Zad1();
+//        lab02_Zad1();
+//        lab02_Zad2();
+//        lab02_Zad3();
+//        lab02_Zad4();
+//        lab02_Zad5();
+//        lab02_Zad6();
 
     }
 
     public static double Input(){
         Scanner input = new Scanner(System.in);
-        System.out.println("in: ");
+        System.out.println("Int: ");
         double n = input.nextInt();
+        return n;
+    }
+
+    public static Boolean InputBool(){
+        Scanner input = new Scanner(System.in);
+        System.out.println("Bool: ");
+        Boolean n = input.nextBoolean();
+        return n;
+    }
+
+    public static char InputChar(){
+        Scanner input = new Scanner(System.in);
+        System.out.println("Char: ");
+        char n = input.next().charAt(0);
         return n;
     }
 
@@ -133,23 +153,88 @@ public class lab2 {
     }
 
     public static void lab02_Zad2() {
+        System.out.println("Podaj x.");
+        double x = Input(), resA, resB, resC;
 
+        resA = x > 0 ? 2 * x : x == 0 ? 0 : -3 * x;
+        resB = x >= 1 ? x * x : x;
+        resC = x > 2 ? x + 2 : x == 2 ? 8 : x - 4;
+
+        System.out.println("Dla a(x): " + resA);
+        System.out.println("Dla b(x): " + resB);
+        System.out.println("Dla c(x): " + resC);
     }
 
     public static void lab02_Zad3() {
+        int [] l = generuj(3);
+        int a = l[0];
+        int b = l[1];
+        int c = l[2];
 
+        System.out.println(("Liczby: " + a + " " + b + " " + c));
+        int max = Math.max(a, Math.max(b, c));
+        int min = Math.min(a, Math.min(b, c));
+        int mid = a + b + c - max - min;
+        System.out.printf("Uporzadkowane %d %d %d%n", min, mid, max);
     }
 
     public static void lab02_Zad4() {
+        System.out.println("Czy pada desc(true/false)");
+        Boolean isPadaDesc = InputBool();
+        System.out.println("Czy jest autobus(true/false)");
+        Boolean isJestAutobus = InputBool();
 
+        String message = "";
+
+        message = isPadaDesc && isJestAutobus ? "Weź parasol %nDostaniesz się na uczelnie"
+                : isPadaDesc && !isJestAutobus ? "Nie dostaniesz się na uczelnię"
+                : "Dostaniesz się na uczelnie %nMiłego dnia i pięknej pogody";
+
+        System.out.printf(message);
     }
 
     public static void lab02_Zad5() {
+        System.out.println("Czy masz znizke(true/false)");
+        Boolean isMaszZnizke = InputBool();
+        System.out.println("Czy otrzymales premie(true/false)");
+        Boolean isOtrzymalesPremie = InputBool();
+
+        String message = "";
+        message = isOtrzymalesPremie || isMaszZnizke ? "Możesz kupić samochód !"
+                : "Zakup samochód trzeba odłożyć na później...";
+
+        System.out.println(message);
+        if (!isMaszZnizke && !isOtrzymalesPremie) System.out.println("Zniżki na samochód nie ma");
 
     }
 
     public static void lab02_Zad6() {
+        System.out.println("Podaj a, b.");
+        double a = Input(), b = Input();
+        System.out.println("[+, -, *, /, %]");
+        char whatToDo = InputChar();
 
+        Double res = null;
+        switch(whatToDo) {
+            case '+':
+                res = a + b;
+                break;
+            case '-':
+                res = a - b;
+                break;
+            case '*':
+                res = a * b;
+                break;
+            case '/':
+                res = a / b;
+                break;
+            case '%':
+                res = a % b;
+                break;
+            default:
+                System.out.printf("Nope");
+        }
+        if(res != null) System.out.printf("Odp: " + res);
     }
 
 }
