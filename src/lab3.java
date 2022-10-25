@@ -9,7 +9,7 @@ public class lab3 {
 //        zad1();
 //        zad2();
 //        zad3();
-        zad4();
+//        zad4();
 //        zad5();
 //        zad6();
 //        zad7();
@@ -78,6 +78,21 @@ public class lab3 {
         }
     }
 
+
+    public static void printArray(int [] arr){
+        for (int a : arr) {
+            System.out.printf(a + " ");
+        }
+        System.out.println();
+    }
+
+    public static void printArray(String [] arr){
+        for (String a : arr) {
+            System.out.printf(a + " ");
+        }
+        System.out.println();
+    }
+
     public static double[] generujDouble(int ilosc){
         double tab[] = new double[ilosc];
         Random rand = new Random();
@@ -113,6 +128,10 @@ public class lab3 {
 
         array = generujDouble(20);
 
+//        for (int i = 0; i < array.length; i++) {
+//            suma += array[i];
+//        }
+
         for (double i : array) {
             suma += i;
         }
@@ -123,9 +142,6 @@ public class lab3 {
         System.out.println("Srednia: " + srednia);
 
     }
-
-
-
     public static void zad2() {
         int len1 = 4;
         int len2 = 3;
@@ -172,7 +188,6 @@ public class lab3 {
         System.out.println();
 
     }
-
     public static void zad4(){
         String [] tablica = new String[5];
 
@@ -190,10 +205,57 @@ public class lab3 {
         }
 
     }
-    public static void zad5() {
 
+
+    public static void zad5() {
+        BubbleSort sort = new BubbleSort();
+
+        int [] tab = new int[8];
+        for (int i = 0; i < 8; i++) {
+            System.out.println("Wpisz " + (i+1) + "/8 int.");
+            tab[i] = InputInt();
+        }
+
+        sort.bubbleSort(tab);
+        System.out.println("Sorted:");
+        printArray(tab);
     }
-    public static void zad6() {}
-    public static void zad7() {}
+    public static void zad6() {
+        int [] tab = new int[5];
+        for (int i = 0; i < 5; i++) {
+            System.out.println("Wpisz " + (i+1) + "/5 int.");
+            tab[i] = InputInt();
+        }
+
+        for (int i = 0; i < tab.length; i++) {
+            int silnia = 1;
+            for (int j = 1; j <= tab[i]; j++) {
+                silnia *= j;
+            }
+            tab[i] = silnia;
+        }
+
+        printArray(tab);
+    }
+    public static void zad7() {
+        String [] tab1 = {"ala", "ma", "kota"};
+        String [] tab2 = {"ala", "ma", "kota"};
+
+        boolean isEqual = true;
+
+        int i = 0;
+        while (isEqual && i < tab1.length && i < tab2.length){
+            if(!tab1[i].equals(tab2[i])){
+                isEqual = false;
+                i = tab1.length;
+            }
+            i++;
+        }
+
+        System.out.println("Arrays:");
+        printArray(tab1);
+        printArray(tab2);
+        System.out.println("Are arrays equal? - " + isEqual);
+    }
 
 }
