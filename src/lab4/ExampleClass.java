@@ -1,4 +1,4 @@
-package klasy;
+package lab4;
 
 public class ExampleClass {
     String name;

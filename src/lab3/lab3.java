@@ -1,3 +1,7 @@
+package lab3;
+
+import Utils.BubbleSort;
+
 import java.util.Locale;
 import java.util.Random;
 import java.util.Scanner;
